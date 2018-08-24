@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F5F5F5"
+        android:scrollbars="none">
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/layoutPopularChains"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnSeasonForOffers"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/white_bg"
+                app:layout_marginTopPercent="3%"
+                app:layout_widthPercent="90%">
+
+                <com.sarthaksharma.zomato.MyCustomMTextViewSemiBold
+                    android:id="@+id/lblPopularChainsDeserts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Popular chains"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/gridHeadingTextSize"
+                    app:layout_marginTopPercent="2%" />
+
+                <com.sarthaksharma.zomato.POJO.ExpandableHeightGridView
+                    android:id="@+id/gridPopularChainsDeserts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblPopularChainsDeserts"
+                    android:layout_marginTop="@dimen/gridSpacing"
+                    android:horizontalSpacing="@dimen/gridSpacing"
+                    android:numColumns="2"
+                    android:scrollbars="none"
+                    android:verticalSpacing="@dimen/gridSpacing" />
+
+            </android.support.percent.PercentRelativeLayout>
+
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/layoutCafesDeserts"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutPopularChains"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/white_bg"
+                app:layout_marginTopPercent="3%"
+                app:layout_widthPercent="90%">
+
+                <com.sarthaksharma.zomato.MyCustomMTextViewSemiBold
+                    android:id="@+id/lblCafes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cafes"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/gridHeadingTextSize"
+                    app:layout_marginTopPercent="2%" />
+
+                <com.sarthaksharma.zomato.MyCustomOSTextViewRegular
+                    android:id="@+id/lblCoffeeSnacksnBeverages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblCafes"
+                    android:layout_centerHorizontal="true"
+                    android:text="Coffee, snacks and Beverages"
+                    android:textSize="@dimen/gridDescriptionTextSize" />
+
+                <com.sarthaksharma.zomato.POJO.ExpandableHeightGridView
+                    android:id="@+id/gridCafesDeserts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblCoffeeSnacksnBeverages"
+                    android:layout_marginTop="@dimen/gridSpacing"
+                    android:horizontalSpacing="@dimen/gridSpacing"
+                    android:numColumns="3"
+                    android:scrollbars="none"
+                    android:verticalSpacing="@dimen/gridSpacing" />
+
+            </android.support.percent.PercentRelativeLayout>
+
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/layoutInTheMoodForDeserts"
+                android:layout_below="@+id/layoutCafesDeserts"
+                app:layout_widthPercent="90%"
+                android:background="@drawable/white_bg"
+                app:layout_marginTopPercent="3%"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <com.sarthaksharma.zomato.MyCustomMTextViewSemiBold
+                    android:id="@+id/lblInTheMoodFor"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="In the mood for..."
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/gridHeadingTextSize"
+                    app:layout_marginTopPercent="2%"
+                    android:textAlignment="center"
+                    />
+
+                <ExpandableListView
+                    android:id="@+id/exLInTheMoodFor"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:scrollbars="none"
+                    android:groupIndicator="@null"
+                    android:layout_below="@+id/lblInTheMoodFor"
+                    android:layout_marginTop="10dp"/>
+
+
+            </android.support.percent.PercentRelativeLayout>
+
+            <com.sarthaksharma.zomato.MyCustomOSButtonSemiBold
+                android:id="@+id/btnNearByDesserts"
+                android:layout_below="@+id/layoutInTheMoodForDeserts"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/white_bg"
+                android:clickable="true"
+                android:gravity="left|center"
+                android:drawableRight="@drawable/ic_action_right"
+                android:paddingLeft="@dimen/btnOrderFoodOnlinePaddingLeft"
+                android:text="Nearby - Deserts and Bakes"
+                android:textAllCaps="false"
+                android:textSize="@dimen/textSizeBtn"
+                app:layout_heightPercent="12%"
+                app:layout_marginTopPercent="3%"
+                app:layout_widthPercent="90%" />
+
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/layout_footer"
+                android:layout_height="wrap_content"
+                app:layout_widthPercent="90%"
+                android:layout_centerHorizontal="true"
+                app:layout_marginTopPercent="3%"
+                android:layout_below="@+id/btnNearByDesserts"
+                android:layout_alignParentBottom="true">
+
+                <com.sarthaksharma.zomato.MyCustomMTextViewSemiBold
+                    android:id="@+id/lblZomatoFooter"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="zomato"
+                    android:textSize="@dimen/footerZomatoTextSize"/>
+
+                <com.sarthaksharma.zomato.MyCustomOSTextViewRegular
+                    android:id="@+id/lblFooter"
+                    android:layout_height="wrap_content"
+                    android:text="We're showing you a combination of our sponsors and popular places around you."
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/footerDescriptionTextSize"
+                    android:layout_below="@+id/lblZomatoFooter"/>
+
+            </android.support.percent.PercentRelativeLayout>
+
+        </android.support.percent.PercentRelativeLayout>
+
+    </ScrollView>
+
+</android.support.percent.PercentRelativeLayout>

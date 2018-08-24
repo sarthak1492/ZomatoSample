@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:background="#F5F5F5">
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.sarthaksharma.zomato.MyCustomOSButtonSemiBold
+                android:id="@+id/btnBookaTable"
+                android:layout_centerHorizontal="true"
+                android:drawableLeft="@drawable/ic_reservation_table"
+                android:background="@drawable/white_bg"
+                android:clickable="true"
+                android:gravity="left|center"
+                android:drawablePadding="@dimen/btnOrderFoodOnlinePaddingLeft"
+                android:drawableRight="@drawable/ic_action_right"
+                android:paddingLeft="@dimen/btnOrderFoodOnlinePaddingLeft"
+                android:text="Book a table"
+                android:textAllCaps="false"
+                android:textSize="@dimen/textSizeBtn"
+                app:layout_heightPercent="12%"
+                app:layout_marginTopPercent="3%"
+                app:layout_widthPercent="90%" />
+
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/layoutZomatoGold"
+                app:layout_heightPercent="17%"
+                app:layout_marginTopPercent="3%"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/btnBookaTable"
+                app:layout_widthPercent="90%"
+                android:background="@drawable/ripple_button">
+
+                <ImageView
+                    android:id="@+id/imgZomatoGold"
+                    app:layout_heightPercent="74%"
+                    app:layout_widthPercent="27%"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    app:layout_marginLeftPercent="2%"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/zomato_gold"/>
+
+                <View android:id="@+id/view1"
+                    android:layout_width="2dp"
+                    android:layout_height="fill_parent"
+                    android:layout_toRightOf="@+id/imgZomatoGold"
+                    android:background="#FFDEAD"
+                    app:layout_marginLeftPercent="2%"
+                    app:layout_marginTopPercent="12%"
+                    app:layout_marginBottomPercent="12%"
+                    />
+
+                <android.support.percent.PercentRelativeLayout
+                    android:id="@+id/layoutTextsZomatoGold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    app:layout_marginLeftPercent="3%"
+                    app:layout_marginRightPercent="3%"
+                    android:layout_toRightOf="@+id/view1">
+
+                    <com.sarthaksharma.zomato.MyCustomMTextViewBold
+                        android:id="@+id/lblZomatoGoldHeading"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Inroducing Zomato Gold!"
+                        android:textSize="@dimen/btnWelcomScreenTextSize"
+                        android:textColor="@android:color/white"
+                        />
+
+                    <com.sarthaksharma.zomato.MyCustomMTextViewRegular
+                        android:id="@+id/lblGoldDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lblZomatoGoldHeading"
+                        android:textSize="@dimen/orTextSize"
+                        app:layout_marginTopPercent="5%"
+                        android:textColor="@android:color/white"
+                        android:text="An exclusive members club. Tap to know more."
+                        />
+
+                </android.support.percent.PercentRelativeLayout>
+
+            </android.support.percent.PercentRelativeLayout>
+
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/layoutGoOutForMeal"
+                app:layout_widthPercent="90%"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                app:layout_marginTopPercent="3%"
+                android:background="@drawable/white_bg"
+                android:layout_below="@+id/layoutZomatoGold">
+
+                <com.sarthaksharma.zomato.MyCustomMTextViewSemiBold
+                    android:id="@+id/lblGetOutForMeal"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="Get out for a meal to ..."
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/gridHeadingTextSize"
+                    app:layout_marginTopPercent="2%"
+                    android:textAlignment="center"
+                    />
+
+                <com.sarthaksharma.zomato.POJO.ExpandableHeightGridView
+                    android:id="@+id/gridOrderFoodFrom"
+                    android:numColumns="2"
+                    android:layout_below="@+id/lblGetOutForMeal"
+                    android:scrollbars="none"
+                    android:horizontalSpacing="@dimen/gridSpacing"
+                    android:verticalSpacing="@dimen/gridSpacing"
+                    android:layout_marginTop="@dimen/gridSpacing"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
+
+            </android.support.percent.PercentRelativeLayout>
+
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/layoutDineOut"
+                app:layout_widthPercent="90%"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                app:layout_marginTopPercent="3%"
+                android:background="@drawable/white_bg"
+                android:layout_below="@+id/layoutGoOutForMeal">
+
+                <com.sarthaksharma.zomato.MyCustomMTextViewSemiBold
+                    android:id="@+id/lblDineOutRestaurants"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="Dine-out restaurants"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/gridHeadingTextSize"
+                    app:layout_marginTopPercent="2%"
+                    android:textAlignment="center"
+                    />
+
+                <com.sarthaksharma.zomato.MyCustomOSTextViewRegular
+                    android:id="@+id/lblGetFoodDelivered"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get out for a meal"
+                    android:textSize="@dimen/gridDescriptionTextSize"
+                    android:layout_below="@+id/lblDineOutRestaurants"
+                    android:layout_centerHorizontal="true"/>
+
+                <com.sarthaksharma.zomato.POJO.ExpandableHeightGridView
+                    android:id="@+id/gridDeliveryRestaurants"
+                    android:numColumns="3"
+                    android:layout_below="@+id/lblGetFoodDelivered"
+                    android:scrollbars="none"
+                    android:horizontalSpacing="@dimen/gridSpacing"
+                    android:verticalSpacing="@dimen/gridSpacing"
+                    android:layout_marginTop="@dimen/gridSpacing"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
+
+            </android.support.percent.PercentRelativeLayout>
+
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/layoutIntheMoodForDining"
+                android:layout_below="@+id/layoutDineOut"
+                app:layout_widthPercent="90%"
+                android:background="@drawable/white_bg"
+                app:layout_marginTopPercent="3%"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <com.sarthaksharma.zomato.MyCustomMTextViewSemiBold
+                    android:id="@+id/lblInTheMoodFor"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="In the mood for..."
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/gridHeadingTextSize"
+                    app:layout_marginTopPercent="2%"
+                    android:textAlignment="center"
+                    />
+
+                <ExpandableListView
+                    android:id="@+id/exLInTheMoodForDining"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:scrollbars="none"
+                    android:groupIndicator="@null"
+                    android:layout_below="@+id/lblInTheMoodFor"
+                    android:layout_marginTop="10dp"/>
+
+            </android.support.percent.PercentRelativeLayout>
+
+            <com.sarthaksharma.zomato.MyCustomOSButtonSemiBold
+                android:id="@+id/btnShowAllDeliveryDining"
+                android:layout_below="@+id/layoutIntheMoodForDining"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/white_bg"
+                android:clickable="true"
+                android:gravity="left|center"
+                android:drawableRight="@drawable/ic_action_right"
+                android:paddingLeft="@dimen/btnOrderFoodOnlinePaddingLeft"
+                android:text="Nearby - Dining Out"
+                android:textAllCaps="false"
+                android:textSize="@dimen/textSizeBtn"
+                app:layout_heightPercent="12%"
+                app:layout_marginTopPercent="3%"
+                app:layout_widthPercent="90%" />
+
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/layout_footer"
+                android:layout_height="wrap_content"
+                app:layout_widthPercent="90%"
+                android:layout_centerHorizontal="true"
+                app:layout_marginTopPercent="3%"
+                android:layout_below="@+id/btnShowAllDeliveryDining"
+                android:layout_alignParentBottom="true">
+
+                <com.sarthaksharma.zomato.MyCustomMTextViewSemiBold
+                    android:id="@+id/lblZomatoFooter"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="zomato"
+                    android:textSize="@dimen/footerZomatoTextSize"/>
+
+                <com.sarthaksharma.zomato.MyCustomOSTextViewRegular
+                    android:id="@+id/lblFooter"
+                    android:layout_height="wrap_content"
+                    android:text="We're showing you a combination of our sponsors and popular places around you."
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/footerDescriptionTextSize"
+                    android:layout_below="@+id/lblZomatoFooter"/>
+
+            </android.support.percent.PercentRelativeLayout>
+
+
+        </android.support.percent.PercentRelativeLayout>
+
+    </ScrollView>
+
+</android.support.percent.PercentRelativeLayout>

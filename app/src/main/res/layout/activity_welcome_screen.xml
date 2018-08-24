@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sarthaksharma.zomato.WelcomeScreenActivity">
+
+    <ImageView
+        android:id="@+id/imgWelcomeScreenImage"
+        android:layout_width="match_parent"
+        android:adjustViewBounds="true"
+        android:background="@drawable/ice_cone"
+        android:scaleType="fitCenter"
+        app:layout_heightPercent="30%" />
+
+    <com.sarthaksharma.zomato.MyCustomMTextViewBold
+        android:id="@+id/lblZomatoWelcomeScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape_redsq_bg"
+        android:gravity="center"
+        android:text="zomato"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/zomatoWelcomeScreenTextSize"
+        app:layout_marginTopPercent="23%" />
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/layout_Texts"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/lblZomatoWelcomeScreen"
+        app:layout_heightPercent="35%">
+
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/layout_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_marginLeftPercent="4%"
+            app:layout_marginTopPercent="12%">
+
+            <ImageView
+                android:id="@+id/imgSearchRed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_action_search_red"
+                 />
+
+            <com.sarthaksharma.zomato.MyCustomOSTextViewSemiBold
+                android:id="@+id/lbltext1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/btnWelcomScreenTextSize"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/imgSearchRed"
+                android:text="View menus, photos, and reviews for restaurants around you"
+                app:layout_marginLeftPercent="4%" />
+        </android.support.percent.PercentRelativeLayout>
+
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/layout_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_search"
+            app:layout_marginLeftPercent="4%"
+            app:layout_marginTopPercent="5%">
+
+            <ImageView
+                android:id="@+id/imgThemeRed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_action_paint"
+                />
+
+            <com.sarthaksharma.zomato.MyCustomOSTextViewSemiBold
+                android:id="@+id/lbltext2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/btnWelcomScreenTextSize"
+                android:layout_toRightOf="@+id/imgThemeRed"
+                android:text="Explore detailed theme-based lists of top places in your city."
+                app:layout_marginLeftPercent="4%" />
+        </android.support.percent.PercentRelativeLayout>
+
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/layout_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_theme"
+            app:layout_marginLeftPercent="4%"
+            app:layout_marginTopPercent="5%">
+
+            <ImageView
+                android:id="@+id/imgBookmarkRed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_action_bookmark"
+                />
+
+            <com.sarthaksharma.zomato.MyCustomOSTextViewSemiBold
+                android:id="@+id/lbltext3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/btnWelcomScreenTextSize"
+                android:layout_toRightOf="@+id/imgBookmarkRed"
+                android:text="Add places you want to visit in the future to your bookmarks"
+                app:layout_marginLeftPercent="4%" />
+        </android.support.percent.PercentRelativeLayout>
+
+
+    </android.support.percent.PercentRelativeLayout>
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/layout_LoginSection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F0F8FF"
+        android:layout_below="@+id/layout_Texts">
+
+        <com.sarthaksharma.zomato.MyCustomOSButtonSemiBold
+            android:id="@+id/btnSignUp"
+            app:layout_widthPercent="39%"
+            app:layout_heightPercent="22%"
+            android:background="@drawable/white_bg"
+            android:onClick="fncNavigateToSignUpPage"
+            app:layout_marginTopPercent="5%"
+            android:text="Sign Up"
+            android:textSize="@dimen/btnWelcomScreenTextSize"
+            android:textAllCaps="false"
+            app:layout_marginLeftPercent="8%"/>
+
+        <com.sarthaksharma.zomato.MyCustomOSButtonSemiBold
+            android:id="@+id/btnLogIn"
+            app:layout_widthPercent="39%"
+            app:layout_heightPercent="22%"
+            android:background="@drawable/white_bg"
+            android:onClick="fncNavigateToLoginPage"
+            android:textSize="@dimen/btnWelcomScreenTextSize"
+            android:layout_alignTop="@+id/btnSignUp"
+            android:text="Log in"
+            android:layout_alignParentRight="true"
+            app:layout_marginRightPercent="8%"
+            android:textAllCaps="false"
+            />
+
+        <com.sarthaksharma.zomato.MyCustomOSButtonSemiBold
+            android:id="@+id/btnFacebookWelcomeScreen"
+            app:layout_widthPercent="85%"
+            app:layout_heightPercent="22%"
+            android:background="@drawable/ic_fb_button_bg"
+            android:layout_centerHorizontal="true"
+            android:text="Continue with Facebook"
+            android:textSize="@dimen/btnWelcomScreenTextSize"
+            android:onClick="fncFacebookAuthentication"
+            android:drawableLeft="@drawable/ic_facebook_svg"
+            android:paddingLeft="@dimen/btnPaddingLeftnRight"
+            android:paddingRight="@dimen/btnPaddingLeftnRight"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:layout_below="@+id/btnSignUp"
+            app:layout_marginTopPercent="6%"/>
+
+        <com.sarthaksharma.zomato.MyCustomOSButtonSemiBold
+            android:id="@+id/btnGoogleWelcomeScreen"
+            app:layout_widthPercent="85%"
+            app:layout_heightPercent="22%"
+            android:background="@drawable/ic_google_button_bg"
+            android:layout_centerHorizontal="true"
+            android:text="Continue with Google"
+            android:drawableLeft="@drawable/ic_google_icon_svg"
+            android:paddingLeft="45dp"
+            android:onClick="fncGoogleAuthentication"
+            android:paddingRight="45dp"
+            android:textSize="@dimen/btnWelcomScreenTextSize"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:layout_below="@+id/btnFacebookWelcomeScreen"
+            app:layout_marginTopPercent="6%"/>
+
+        <com.sarthaksharma.zomato.MyCustomMTextViewRegular
+            android:id="@+id/lblFooter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="We never post unless your tell us to"
+            android:layout_alignParentBottom="true"
+            android:textSize="@dimen/footerWelcomScreen"
+            android:layout_centerHorizontal="true"
+            app:layout_marginBottomPercent="4%"/>
+
+    </android.support.percent.PercentRelativeLayout>
+
+
+</android.support.percent.PercentRelativeLayout>

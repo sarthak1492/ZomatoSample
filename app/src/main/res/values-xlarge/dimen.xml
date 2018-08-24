@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Splash Screen -->
+    <dimen name="zomatoTextSize">100sp</dimen>
+
+    <!-- Welcome Screen -->
+    <dimen name="zomatoWelcomeScreenTextSize">30sp</dimen>
+    <dimen name="sqRedBgSize">140dp</dimen>
+    <dimen name="btnWelcomScreenTextSize">28sp</dimen>
+    <dimen name="footerWelcomScreen">20sp</dimen>
+    <dimen name="sqRedBgRadius">6dp</dimen>
+
+    <!-- Sign Up Screen -->
+    <dimen name="signUpText">34sp</dimen>
+    <dimen name="fbTextButton">30sp</dimen>
+    <dimen name="orTextSize">24sp</dimen>
+    <dimen name="ediTextsSize">30sp</dimen>
+    <dimen name="btnTextSize">34sp</dimen>
+    <dimen name="loginLinktextSize">26sp</dimen>
+    <dimen name="termsTextSize">20sp</dimen>
+    <dimen name="editTextPadding">20dp</dimen>
+    <dimen name="googlebtnPaddingLeft">40dp</dimen>
+    <dimen name="googlebtnPaddingRight">100dp</dimen>
+    <dimen name="btnPaddingLeftnRight">80dp</dimen>
+    <dimen name="btnPadding">90dp</dimen>
+    <dimen name="fbgoogle_SvgSize">48dp</dimen>
+
+    <!-- Home Page Screen -->
+    <dimen name="tabTextSize">30sp</dimen>
+
+    <!-- Delivery Fragment -->
+    <dimen name="btnOrderFoodOnlinePaddingLeft">20dp</dimen>
+    <dimen name="textSizeBtn">30sp</dimen>
+    <dimen name="whiteBGradius">6dp</dimen>
+    <dimen name="gridHeadingTextSize">30sp</dimen>
+    <dimen name="gridSpacing">20dp</dimen>
+    <dimen name="gridDescriptionTextSize">20sp</dimen>
+    <dimen name="deliveryRestaurantImageHeight">180dp</dimen>
+    <dimen name="deliveryRestaurantAddressTextSize">16sp</dimen>
+    <dimen name="ratingsTextHeight">80dp</dimen>
+    <dimen name="footerZomatoTextSize">60sp</dimen>
+    <dimen name="footerDescriptionTextSize">24sp</dimen>
+    <dimen name="ratingsTextSize">36sp</dimen>
+
+    <!-- Collections Fragment -->
+    <dimen name="layout_height">120dp</dimen>
+    <dimen name="layour_headingTextSize">32sp</dimen>
+    <dimen name="layout_main_height">200dp</dimen>
+
+    <!-- Profile Screen -->
+    <dimen name="btnSharenEditMargnTop">60dp</dimen>
+    <dimen name="userNameTextProfile">40sp</dimen>
+    <dimen name="textsMarginTop">10dp</dimen>
+    <dimen name="layoutSectionsWidth">240dp</dimen>
+    <dimen name="viewHeight">2dp</dimen>
+    <dimen name="sectionsTextsSize">24sp</dimen>
+</resources>

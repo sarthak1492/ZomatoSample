@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Splash Screen -->
+    <dimen name="zomatoTextSize">75sp</dimen>
+
+    <!-- Welcome Screen -->
+    <dimen name="zomatoWelcomeScreenTextSize">22.5sp</dimen>
+    <dimen name="sqRedBgSize">105dp</dimen>
+    <dimen name="btnWelcomScreenTextSize">21sp</dimen>
+    <dimen name="footerWelcomScreen">15sp</dimen>
+    <dimen name="sqRedBgRadius">4.5dp</dimen>
+
+    <!-- Sign Up Screen -->
+    <dimen name="signUpText">25.5sp</dimen>
+    <dimen name="fbTextButton">22.5sp</dimen>
+    <dimen name="orTextSize">18sp</dimen>
+    <dimen name="ediTextsSize">22.5sp</dimen>
+    <dimen name="btnTextSize">25.5sp</dimen>
+    <dimen name="loginLinktextSize">19.5sp</dimen>
+    <dimen name="termsTextSize">15sp</dimen>
+    <dimen name="editTextPadding">15dp</dimen>
+    <dimen name="googlebtnPaddingLeft">30dp</dimen>
+    <dimen name="googlebtnPaddingRight">75dp</dimen>
+    <dimen name="btnPaddingLeftnRight">60dp</dimen>
+    <dimen name="btnPadding">67.5dp</dimen>
+    <dimen name="fbgoogle_SvgSize">36dp</dimen>
+
+    <!-- Home Page Screen -->
+    <dimen name="tabTextSize">22.5sp</dimen>
+
+    <!-- Delivery Fragment -->
+    <dimen name="btnOrderFoodOnlinePaddingLeft">15dp</dimen>
+    <dimen name="textSizeBtn">22.5sp</dimen>
+    <dimen name="whiteBGradius">4.5dp</dimen>
+    <dimen name="gridHeadingTextSize">22.5sp</dimen>
+    <dimen name="gridSpacing">15dp</dimen>
+    <dimen name="gridDescriptionTextSize">15sp</dimen>
+    <dimen name="deliveryRestaurantImageHeight">135dp</dimen>
+    <dimen name="deliveryRestaurantAddressTextSize">12sp</dimen>
+    <dimen name="ratingsTextHeight">60dp</dimen>
+    <dimen name="footerZomatoTextSize">45sp</dimen>
+    <dimen name="footerDescriptionTextSize">15sp</dimen>
+    <dimen name="ratingsTextSize">27sp</dimen>
+
+    <!-- Collections Fragment -->
+    <dimen name="layout_height">90dp</dimen>
+    <dimen name="layour_headingTextSize">24sp</dimen>
+    <dimen name="layout_main_height">150dp</dimen>
+
+    <!-- Profile Screen -->
+    <dimen name="btnSharenEditMargnTop">45dp</dimen>
+    <dimen name="userNameTextProfile">30sp</dimen>
+    <dimen name="textsMarginTop">7.5dp</dimen>
+    <dimen name="layoutSectionsWidth">180dp</dimen>
+    <dimen name="viewHeight">1.5dp</dimen>
+    <dimen name="sectionsTextsSize">18sp</dimen>
+
+</resources>

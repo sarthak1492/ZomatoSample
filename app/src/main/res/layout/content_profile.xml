@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.sarthaksharma.zomato.ProfileActivity"
+    tools:showIn="@layout/activity_profile">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/layoutProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white">
+
+                <com.sarthaksharma.zomato.POJO.ProfileCircularNetworkImageView
+                    android:id="@+id/imgUserImage"
+                    android:layout_width="@dimen/layout_main_height"
+                    android:layout_height="@dimen/layout_main_height"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/editTextPadding" />
+
+                <Button
+                    android:id="@+id/btnShare"
+                    android:layout_width="@dimen/googlebtnPaddingRight"
+                    android:layout_height="@dimen/googlebtnPaddingRight"
+                    app:layout_marginLeftPercent="10%"
+                    app:layout_marginTopPercent="10%"
+                    android:background="@drawable/bg_circular_btn"
+                    android:drawableStart="@drawable/ic_share"
+                    android:onClick="fncShare"
+                    android:padding="@dimen/editTextPadding" />
+
+                <Button
+                    android:id="@+id/btnEdit"
+                    android:layout_width="@dimen/googlebtnPaddingRight"
+                    android:layout_height="@dimen/googlebtnPaddingRight"
+                    android:layout_alignParentEnd="true"
+                    app:layout_marginTopPercent="10%"
+                    android:onClick="fncEditProfile"
+                    app:layout_marginRightPercent="10%"
+                    android:background="@drawable/bg_circular_btn"
+                    android:drawableStart="@drawable/ic_pencil"
+                    android:padding="@dimen/editTextPadding" />
+
+                <com.sarthaksharma.zomato.MyCustomMTextViewRegular
+                    android:id="@+id/lblProfileUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imgUserImage"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/editTextPadding"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/userNameTextProfile" />
+
+                <com.sarthaksharma.zomato.MyCustomMTextViewRegular
+                    android:id="@+id/lblArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblProfileUserName"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/textsMarginTop"
+                    android:text="Delhi NCR"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/zomatoWelcomeScreenTextSize" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/viewHeight"
+                    android:layout_below="@+id/lblArea"
+                    android:layout_marginTop="@dimen/textsMarginTop"
+                    android:background="@android:color/darker_gray" />
+
+            </android.support.percent.PercentRelativeLayout>
+
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/layoutSections"
+                android:layout_width="match_parent"
+                app:layout_heightPercent="10%"
+                android:layout_below="@+id/layoutProfile">
+
+                <android.support.percent.PercentRelativeLayout
+                    android:id="@+id/layoutFollowers"
+                    app:layout_widthPercent="33%"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white">
+
+                    <com.sarthaksharma.zomato.MyCustomMTextViewSemiBold
+                        android:id="@+id/lblFollowers"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="18 \nFOLLOWERS"
+                        android:textSize="@dimen/sectionsTextsSize" />
+
+                    <View
+                        android:layout_width="@dimen/viewHeight"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentEnd="true"
+                        android:background="@android:color/darker_gray" />
+
+                </android.support.percent.PercentRelativeLayout>
+
+                <android.support.percent.PercentRelativeLayout
+                    android:id="@+id/layoutBeenHere"
+                    app:layout_widthPercent="33%"
+                    android:layout_height="fill_parent"
+                    android:layout_toRightOf="@+id/layoutFollowers"
+                    android:background="@android:color/white">
+
+                    <com.sarthaksharma.zomato.MyCustomMTextViewSemiBold
+                        android:id="@+id/lblBeenHere"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="0 \nBEEN HERE"
+                        android:textSize="@dimen/sectionsTextsSize" />
+
+                    <View
+                        android:layout_width="@dimen/viewHeight"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentEnd="true"
+                        android:background="@android:color/darker_gray" />
+
+                </android.support.percent.PercentRelativeLayout>
+
+                <android.support.percent.PercentRelativeLayout
+                    android:id="@+id/layoutCollections"
+                    android:layout_width="@dimen/layoutSectionsWidth"
+                    android:layout_height="fill_parent"
+                    android:layout_toRightOf="@+id/layoutBeenHere"
+                    android:layout_alignParentEnd="true"
+                    android:background="@android:color/white">
+
+                    <com.sarthaksharma.zomato.MyCustomMTextViewSemiBold
+                        android:id="@+id/lblCollections"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="0 \nCollections"
+                        android:textSize="@dimen/sectionsTextsSize" />
+
+                </android.support.percent.PercentRelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/viewHeight"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="@dimen/textsMarginTop"
+                    android:background="@android:color/darker_gray" />
+
+            </android.support.percent.PercentRelativeLayout>
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabsProfileDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutSections"
+                android:background="@android:color/white"
+                app:tabIndicatorColor="@android:color/holo_red_light"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@android:color/black"
+                app:tabTextColor="@android:color/black" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPagerProfile"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/tabsProfileDetails" />
+
+        </android.support.percent.PercentRelativeLayout>
+
+
+    </ScrollView>
+
+</android.support.percent.PercentRelativeLayout>

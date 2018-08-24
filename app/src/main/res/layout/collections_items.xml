@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/layout_main_height"
+    card_view:cardCornerRadius="5dp"
+    android:layout_margin="@dimen/btnOrderFoodOnlinePaddingLeft"
+    card_view:cardElevation="2dp">
+
+    <RelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/viewParent"
+            android:layout_width="match_parent"
+            android:layout_margin="@dimen/btnOrderFoodOnlinePaddingLeft"
+            android:layout_height="@dimen/layout_height">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="7dp"
+                android:textSize="@dimen/layour_headingTextSize"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/loginLinktextSize" />
+
+            <ImageView
+                android:id="@+id/year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/ic_arrow" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/viewParent"
+            android:background="#ffffff">
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/btnOrderFoodOnlinePaddingLeft"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/loginLinktextSize"
+                android:text="The most popular resturant in town this week"
+                android:textColor="#000000" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
+

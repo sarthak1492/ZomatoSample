@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <RelativeLayout
+        android:id="@+id/layoutZomato"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.sarthaksharma.zomato.MyCustomMTextViewRegular
+            android:id="@+id/lblZomato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/editTextPadding"
+            android:text="zomato"
+            android:layout_marginTop="40dp"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="20sp" />
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/lblZomato"
+            android:layout_marginLeft="@dimen/editTextPadding"
+            android:layout_marginTop="@dimen/editTextPadding"
+            android:background="@android:color/darker_gray" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutZomato">
+
+
+        <com.sarthaksharma.zomato.POJO.ProfileCircularNetworkImageView
+            android:id="@+id/imgUserImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/editTextPadding"
+            android:layout_marginTop="@dimen/editTextPadding"
+
+            app:srcCompat="@mipmap/ic_launcher_round" />
+
+        <RelativeLayout
+            android:id="@+id/layoutName"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imgUserImage">
+
+            <com.sarthaksharma.zomato.MyCustomMTextViewBold
+                android:id="@+id/lblUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <com.sarthaksharma.zomato.MyCustomMTextViewRegular
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lblUserName"
+                android:text="0 REVIEWS, 18 FOLLOWERS"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="10sp"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>

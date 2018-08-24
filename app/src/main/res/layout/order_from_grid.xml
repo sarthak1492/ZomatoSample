@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgImages"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/deliveryRestaurantImageHeight"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"/>
+
+        <com.sarthaksharma.zomato.MyCustomMTextViewBold
+            android:id="@+id/lblRatings"
+            android:layout_width="@dimen/ratingsTextHeight"
+            android:layout_height="wrap_content"
+            android:text="4.3"
+            android:textSize="@dimen/ratingsTextSize"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/holo_green_dark"/>
+
+        <com.sarthaksharma.zomato.MyCustomMTextViewBold
+            android:id="@+id/lblRestaurantName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/gridDescriptionTextSize"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="@dimen/gridSpacing"
+            android:layout_below="@+id/imgImages"/>
+
+        <com.sarthaksharma.zomato.MyCustomOSTextViewItalic
+            android:id="@+id/lblRestaurantAddresses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_below="@+id/lblRestaurantName"
+            android:textSize="@dimen/deliveryRestaurantAddressTextSize"
+            android:layout_marginLeft="@dimen/gridSpacing"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

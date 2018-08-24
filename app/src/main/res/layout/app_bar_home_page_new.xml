@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sarthaksharma.zomato.HomePageActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#CB202D"
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+            <android.support.percent.PercentRelativeLayout
+                android:layout_width="wrap_content"
+                android:clickable="true"
+
+                android:layout_height="match_parent">
+
+                <com.sarthaksharma.zomato.MyCustomMTextViewBold
+                    android:id="@+id/lblYourLocation"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="your location"
+                    app:layout_marginTopPercent="8%"
+                    android:textAllCaps="true"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="10sp"
+                    />
+                <com.sarthaksharma.zomato.MyCustomMTextViewBold
+                    android:id="@+id/lblLoadLocation"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+
+                    android:layout_below="@+id/lblYourLocation"
+                    android:textColor="#FFFFFF"
+                    android:textSize="23sp"/>
+
+            </android.support.percent.PercentRelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabsCategories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabMode="scrollable"
+            android:background="#FFFFFF"
+            app:tabSelectedTextColor="@android:color/holo_green_dark"
+            app:tabIndicatorColor="@android:color/holo_green_dark"
+            app:tabTextColor="@android:color/black"
+            />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_home_page_new" />
+
+</android.support.design.widget.CoordinatorLayout>
