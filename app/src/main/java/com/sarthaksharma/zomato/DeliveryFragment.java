@@ -2,6 +2,7 @@ package com.sarthaksharma.zomato;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -34,22 +35,14 @@ public class DeliveryFragment extends Fragment {
     Button btnShowAllDelivery;
     SharedPreferences mPreferences;
 
-    ArrayList<String> images = new ArrayList<>(Arrays.asList("https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
-            "http://www.technobuffalo.com/wp-content/uploads/2014/04/fast-food.jpg", "https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg"));
-    ArrayList<String> strRestaurantNames = new ArrayList<>(Arrays.asList("Slice of Italy", "Whipped", "BTW", "Hwealthcafe"));
-    ArrayList<String> strRatings = new ArrayList<>(Arrays.asList("4.3", "3.6", "2.9", "4.9"));
-    ArrayList<String> strAddresses = new ArrayList<>(Arrays.asList("OKHLA PHASE 2, NEW DELHI", "GREATER KAILASH 2, NEW DELHI", "LIVING STYLE MALL, JASOLA",
-            "NEW FRIENDS COLONY, NEW DELHI"));
+    ArrayList<String> images = new ArrayList<>();
+    ArrayList<String> strRestaurantNames = new ArrayList<>();
+    ArrayList<String> strRatings = new ArrayList<>();
+    ArrayList<String> strAddresses = new ArrayList<>();
 
-    ArrayList<String> arrDRImages = new ArrayList<>(Arrays.asList("https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
-            "http://www.technobuffalo.com/wp-content/uploads/2014/04/fast-food.jpg", "https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg",
-            "https://bunge.s3.amazonaws.com/categories/images/000/000/006/content/Super-Cat-Food-Ingredients.jpg?1357968333",
-            "https://i.kinja-img.com/gawker-media/image/upload/s--XjPNJ3d7--/c_scale,fl_progressive,q_80,w_1600/be9vyovcn2gqwod7kd16.jpg"));
-    ArrayList<String> strDRNames = new ArrayList<>(Arrays.asList("Work on Wheels", "Deli Belly", "House of Delicious", "Subway", "BTW", "Domino's Pizza"));
-    ArrayList<String> strDRAddresses = new ArrayList<>(Arrays.asList("JASOLA DISTRICT CENTER, NEW DELHI", "LIVING STYLE MALL, JASOLA VIHAR",
-            "ohkhla  phase 3, new delhi", "Tower B, Jasola Vihar", "RPS colony, New Delhi", "dilshad garden, new delhi"));
+    ArrayList<String> arrDRImages = new ArrayList<>();
+    ArrayList<String> strDRNames = new ArrayList<>();
+    ArrayList<String> strDRAddresses = new ArrayList<>();
 
     @Override
     public void onAttach(Activity activity) {
@@ -64,6 +57,9 @@ public class DeliveryFragment extends Fragment {
 
         btnShowAllDelivery = (Button) view.findViewById(R.id.btnShowAllDelivery);
         mPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+
+        DeliveryContentTask deliveryContentTask = new DeliveryContentTask();
+        deliveryContentTask.execute();
 
         final ExpandableHeightGridView gridView=(ExpandableHeightGridView) view.findViewById(R.id.gridOrderFoodFrom);
         gridView.setExpanded(true);
@@ -94,6 +90,42 @@ public class DeliveryFragment extends Fragment {
 
         return view;
 
+    }
+
+    public class DeliveryContentTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            images = new ArrayList<>(Arrays.asList("https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg",
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
+                    "http://www.technobuffalo.com/wp-content/uploads/2014/04/fast-food.jpg", "https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg"));
+            strRestaurantNames = new ArrayList<>(Arrays.asList("Slice of Italy", "Whipped", "BTW", "Hwealthcafe"));
+            strRatings = new ArrayList<>(Arrays.asList("4.3", "3.6", "2.9", "4.9"));
+            strAddresses = new ArrayList<>(Arrays.asList("OKHLA PHASE 2, NEW DELHI", "GREATER KAILASH 2, NEW DELHI", "LIVING STYLE MALL, JASOLA",
+                    "NEW FRIENDS COLONY, NEW DELHI"));
+
+
+            arrDRImages = new ArrayList<>(Arrays.asList("https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg",
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
+                    "http://www.technobuffalo.com/wp-content/uploads/2014/04/fast-food.jpg", "https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg",
+                    "https://bunge.s3.amazonaws.com/categories/images/000/000/006/content/Super-Cat-Food-Ingredients.jpg?1357968333",
+                    "https://i.kinja-img.com/gawker-media/image/upload/s--XjPNJ3d7--/c_scale,fl_progressive,q_80,w_1600/be9vyovcn2gqwod7kd16.jpg"));
+            strDRNames = new ArrayList<>(Arrays.asList("Work on Wheels", "Deli Belly", "House of Delicious", "Subway", "BTW", "Domino's Pizza"));
+            strDRAddresses = new ArrayList<>(Arrays.asList("JASOLA DISTRICT CENTER, NEW DELHI", "LIVING STYLE MALL, JASOLA VIHAR",
+                    "ohkhla  phase 3, new delhi", "Tower B, Jasola Vihar", "RPS colony, New Delhi", "dilshad garden, new delhi"));
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
     }
 
 }
