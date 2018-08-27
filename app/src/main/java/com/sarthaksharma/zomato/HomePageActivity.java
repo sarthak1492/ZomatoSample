@@ -35,6 +35,8 @@ import com.sarthaksharma.zomato.POJO.ProfileCircularNetworkImageView;
 import com.sarthaksharma.zomato.app.AppController;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -51,6 +53,7 @@ public class HomePageActivity extends AppCompatActivity
     String strNewLocation;
     String strUserName;
     String strProfilePic;
+    List<String> arrTitleList = new ArrayList<>(Arrays.asList("Delivery", "Dining Out", "Deserts & Bakes"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
