@@ -21,7 +21,6 @@
             <android.support.percent.PercentRelativeLayout
                 android:layout_width="wrap_content"
                 android:clickable="true"
-
                 android:layout_height="match_parent">
 
                 <com.sarthaksharma.zomato.MyCustomMTextViewBold
@@ -39,7 +38,6 @@
                     android:id="@+id/lblLoadLocation"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-
                     android:layout_below="@+id/lblYourLocation"
                     android:textColor="#FFFFFF"
                     android:textSize="23sp"/>
