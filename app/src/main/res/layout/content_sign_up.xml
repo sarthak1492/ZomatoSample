@@ -117,15 +117,14 @@
 
     <com.sarthaksharma.zomato.MyCustomMTextViewSemiBold
         android:id="@+id/lblLoginLink"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/btnSignUp"
         android:layout_centerHorizontal="true"
-        android:textSize="@dimen/loginLinktextSize"
         android:onClick="fncNavigateToLoginPageFromSignUp"
-        app:layout_marginTopPercent="3%"
         android:text="Already a member? Log in"
-        />
+        android:textSize="@dimen/loginLinktextSize"
+        app:layout_marginTopPercent="3%" />
 
     <com.sarthaksharma.zomato.MyCustomOSTextViewLight
         android:id="@+id/lblTerms"
