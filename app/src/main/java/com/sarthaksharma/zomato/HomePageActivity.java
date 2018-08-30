@@ -53,7 +53,8 @@ public class HomePageActivity extends AppCompatActivity
     String strNewLocation;
     String strUserName;
     String strProfilePic;
-    List<String> arrTitleList = new ArrayList<>(Arrays.asList("Delivery", "Dining Out", "Deserts & Bakes"));
+    List<String> arrTitleList = new ArrayList<>(Arrays.asList("Delivery", "Dining Out", "Deserts & Bakes", "Cafes & More"));
+    int count = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,13 +151,17 @@ public class HomePageActivity extends AppCompatActivity
 
     private void setUpViewPager(ViewPager viewPager){
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new DeliveryFragment(), "Delivery");
-        adapter.addFragment(new DiningFragment(), "Dining Out");
-        adapter.addFragment(new DesertsBakesFragment(), "Deserts & Bakes");
-        adapter.addFragment(new CafesMoreFragment(), "Cafes & More");
-        adapter.addFragment(new DrinksNightLifeFragment(), "Drinks & Nightlife");
-        adapter.addFragment(new CollectionsFragment(), "Collections");
-        viewPager.setAdapter(adapter);
+//        adapter.addFragment(new DeliveryFragment(), "Delivery");
+//        adapter.addFragment(new DiningFragment(), "Dining Out");
+//        adapter.addFragment(new DesertsBakesFragment(), "Deserts & Bakes");
+//        adapter.addFragment(new CafesMoreFragment(), "Cafes & More");
+//        adapter.addFragment(new DrinksNightLifeFragment(), "Drinks & Nightlife");
+//        adapter.addFragment(new CollectionsFragment(), "Collections");
+
+        for (int i = 0; i < arrTitleList.size(); i++){
+            adapter.addFragment(new DeliveryFragment(), arrTitleList.get(i));
+            viewPager.setAdapter(adapter);
+        }
     }
 
     @Override

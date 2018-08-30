@@ -65,10 +65,10 @@ public class DeliveryRestaurantAdapter extends BaseAdapter {
         Picasso.with(activity).load(intDRimages.get(i)).into(imgDRImages);
 
         TextView lblDRNames = (TextView) itemview.findViewById(R.id.lblDRNames);
-        lblDRNames.setText(strDRNames.get(i));
+//        lblDRNames.setText(strDRNames.get(i));
 
         TextView lblDRAddresses = (TextView) itemview.findViewById(R.id.lblDRAddresses);
-        lblDRAddresses.setText(strDRAddresses.get(i));
+        //lblDRAddresses.setText(strDRAddresses.get(i));
 
         return itemview;
     }
