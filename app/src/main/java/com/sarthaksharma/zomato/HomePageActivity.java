@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +14,7 @@ import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -29,10 +31,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 import com.sarthaksharma.zomato.Adapters.ViewPagerAdapter;
 import com.sarthaksharma.zomato.LocationServices.GPSTracker;
 import com.sarthaksharma.zomato.POJO.ProfileCircularNetworkImageView;
 import com.sarthaksharma.zomato.app.AppController;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -53,18 +62,27 @@ public class HomePageActivity extends AppCompatActivity
     String strNewLocation;
     String strUserName;
     String strProfilePic;
-    List<String> arrTitleList = new ArrayList<>(Arrays.asList("Delivery", "Dining Out", "Deserts & Bakes", "Cafes & More"));
+    List<String> arrTitleList = new ArrayList<>();
     int count = 3;
+    String strName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_new);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        MovableFloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         setSupportActionBar(toolbar);
 
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-        setUpViewPager(viewPager);
+//        setUpViewPager(viewPager);
         tabsCategories = (TabLayout) findViewById(R.id.tabsCategories);
         tabsCategories.setupWithViewPager(viewPager);
 
@@ -73,6 +91,8 @@ public class HomePageActivity extends AppCompatActivity
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.parseColor("#CD0000"));
         }
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -147,22 +167,78 @@ public class HomePageActivity extends AppCompatActivity
         else {
             Toast.makeText(this, "Permission not granted", Toast.LENGTH_SHORT).show();
         }
+        
+        new GetHeadingsTask().execute();
     }
 
-    private void setUpViewPager(ViewPager viewPager){
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-//        adapter.addFragment(new DeliveryFragment(), "Delivery");
-//        adapter.addFragment(new DiningFragment(), "Dining Out");
-//        adapter.addFragment(new DesertsBakesFragment(), "Deserts & Bakes");
-//        adapter.addFragment(new CafesMoreFragment(), "Cafes & More");
-//        adapter.addFragment(new DrinksNightLifeFragment(), "Drinks & Nightlife");
-//        adapter.addFragment(new CollectionsFragment(), "Collections");
+    public class GetHeadingsTask extends AsyncTask<String, Void, String>{
 
-        for (int i = 0; i < arrTitleList.size(); i++){
-            adapter.addFragment(new DeliveryFragment(), arrTitleList.get(i));
-            viewPager.setAdapter(adapter);
+        JSONObject jsonObject;
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        @Override
+        protected String doInBackground(String... strings) {
+
+            Ion.getDefault(getApplicationContext()).configure().setLogging(getString(R.string.app_name), Log.DEBUG);
+            Ion.with(getApplicationContext())
+                    .load("https://developers.zomato.com/api/v2.1/categories")
+                    .setHeader("user-key", "131579da26e301d3506565431a58d25e")
+                    .asJsonObject()
+                    .setCallback(new FutureCallback<JsonObject>() {
+                        @Override
+                        public void onCompleted(Exception e, JsonObject result) {
+                            Log.i("Result", result.toString());
+                            try {
+                                jsonObject = new JSONObject(result.toString());
+                                JSONArray jsonArray = jsonObject.getJSONArray("categories");
+                                for (int i = 0; i < jsonArray.length(); i++){
+                                    JSONObject catObject = (JSONObject) jsonArray.get(i);
+                                    JSONObject jsonCatItems = catObject.getJSONObject("categories");
+
+                                    strName = jsonCatItems.getString("name");
+
+                                    arrTitleList.add(strName);
+                                    adapter.addFragment(new DeliveryFragment(), arrTitleList.get(i));
+                                    viewPager.setAdapter(adapter);
+                                }
+                            }catch (Exception ex){
+                                    e.printStackTrace();
+                            }
+                        }
+                    });
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+//            try{
+//
+//            }catch (Exception e){
+//                e.printStackTrace();
+//            }
+
+
         }
     }
+
+
+//    private void setUpViewPager(ViewPager viewPager){
+//        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+////        adapter.addFragment(new DeliveryFragment(), "Delivery");
+////        adapter.addFragment(new DiningFragment(), "Dining Out");
+////        adapter.addFragment(new DesertsBakesFragment(), "Deserts & Bakes");
+////        adapter.addFragment(new CafesMoreFragment(), "Cafes & More");
+////        adapter.addFragment(new DrinksNightLifeFragment(), "Drinks & Nightlife");
+////        adapter.addFragment(new CollectionsFragment(), "Collections");
+//
+//        for (int i = 0; i < arrTitleList.size(); i++){
+//            adapter.addFragment(new DeliveryFragment(), arrTitleList.get(i));
+//            viewPager.setAdapter(adapter);
+//        }
+//    }
 
     @Override
     public void onBackPressed() {
