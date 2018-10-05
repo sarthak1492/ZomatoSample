@@ -30,7 +30,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
@@ -46,8 +53,10 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class HomePageActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -66,8 +75,8 @@ public class HomePageActivity extends AppCompatActivity
     int count = 3;
     String strName;
 
-
-
+    List<String> arr = new ArrayList<>();
+    JSONObject jsonObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,16 +84,11 @@ public class HomePageActivity extends AppCompatActivity
         setContentView(R.layout.activity_home_page_new);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         MovableFloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
         setSupportActionBar(toolbar);
 
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-//        setUpViewPager(viewPager);
+        setUpViewPager(viewPager);
         tabsCategories = (TabLayout) findViewById(R.id.tabsCategories);
         tabsCategories.setupWithViewPager(viewPager);
 
@@ -170,77 +174,127 @@ public class HomePageActivity extends AppCompatActivity
             Toast.makeText(this, "Permission not granted", Toast.LENGTH_SHORT).show();
         }
         
-        new GetHeadingsTask().execute();
+        fetchJSONData();
     }
 
-    public class GetHeadingsTask extends AsyncTask<String, Void, String>{
+    public void fetchJSONData() {
 
-        JSONObject jsonObject;
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        @Override
-        protected String doInBackground(String... strings) {
+        StringRequest request = new StringRequest(Request.Method.POST, "https://developers.zomato.com/api/v2.1/categories", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.i("Result", response.toString());
 
-            Ion.getDefault(getApplicationContext()).configure().setLogging(getString(R.string.app_name), Log.DEBUG);
-            Ion.with(getApplicationContext())
-                    .load("https://developers.zomato.com/api/v2.1/categories")
-                    .setHeader("user-key", "131579da26e301d3506565431a58d25e")
-                    .asJsonObject()
-                    .setCallback(new FutureCallback<JsonObject>() {
-                        @Override
-                        public void onCompleted(Exception e, JsonObject result) {
-                            Log.i("Result", result.toString());
-                            try {
-                                jsonObject = new JSONObject(result.toString());
-                                JSONArray jsonArray = jsonObject.getJSONArray("categories");
-                                for (int i = 0; i < jsonArray.length(); i++){
-                                    JSONObject catObject = (JSONObject) jsonArray.get(i);
-                                    JSONObject jsonCatItems = catObject.getJSONObject("categories");
+                try {
+                    jsonObject = new JSONObject(response);
+                    JSONArray jsonArray = jsonObject.getJSONArray("categories");
+                    for (int i = 0; i < jsonArray.length(); i++){
+                        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+                        JSONObject catObject = (JSONObject) jsonArray.get(i);
+                        JSONObject jsonCatItems = catObject.getJSONObject("categories");
 
-                                    strName = jsonCatItems.getString("name");
+                        String strName = jsonCatItems.getString("name");
+                        arr.add(strName);
+                        Log.i("Array: ", arr.get(i));
 
-                                    arrTitleList.add(strName);
-                                    adapter.addFragment(new DeliveryFragment(), arrTitleList.get(i));
-                                    viewPager.setAdapter(adapter);
-                                }
-                            }catch (Exception ex){
-                                    e.printStackTrace();
-                            }
-                        }
-                    });
+                        arr.add(strName);
+                        adapter.addFragment(new DeliveryFragment(), arr.get(i));
+                        viewPager.setAdapter(adapter);
+                    }
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(HomePageActivity.this, "Error Connecting to the server.", Toast.LENGTH_SHORT).show();
+            }
+        })
 
+        {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/json; charset=UTF-8");
+                params.put("user-key", "131579da26e301d3506565431a58d25e");
+                return params;
+            }
 
-            return null;
-        }
+        };
 
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(request);
 
-//            try{
+    }
+
+//    public class GetHeadingsTask extends AsyncTask<String, Void, String>{
 //
-//            }catch (Exception e){
-//                e.printStackTrace();
-//            }
-
-
-        }
-    }
-
-
-//    private void setUpViewPager(ViewPager viewPager){
+//        JSONObject jsonObject;
 //        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-////        adapter.addFragment(new DeliveryFragment(), "Delivery");
-////        adapter.addFragment(new DiningFragment(), "Dining Out");
-////        adapter.addFragment(new DesertsBakesFragment(), "Deserts & Bakes");
-////        adapter.addFragment(new CafesMoreFragment(), "Cafes & More");
-////        adapter.addFragment(new DrinksNightLifeFragment(), "Drinks & Nightlife");
-////        adapter.addFragment(new CollectionsFragment(), "Collections");
+//        @Override
+//        protected String doInBackground(String... strings) {
 //
-//        for (int i = 0; i < arrTitleList.size(); i++){
-//            adapter.addFragment(new DeliveryFragment(), arrTitleList.get(i));
-//            viewPager.setAdapter(adapter);
+//            Ion.getDefault(getApplicationContext()).configure().setLogging(getString(R.string.app_name), Log.DEBUG);
+//            Ion.with(getApplicationContext())
+//                    .load("https://developers.zomato.com/api/v2.1/categories")
+//                    .setHeader("user-key", "131579da26e301d3506565431a58d25e")
+//                    .asJsonObject()
+//                    .setCallback(new FutureCallback<JsonObject>() {
+//                        @Override
+//                        public void onCompleted(Exception e, JsonObject result) {
+//                            Log.i("Result", result.toString());
+//                            try {
+//                                jsonObject = new JSONObject(result.toString());
+//                                JSONArray jsonArray = jsonObject.getJSONArray("categories");
+//                                for (int i = 0; i < jsonArray.length(); i++){
+//                                    JSONObject catObject = (JSONObject) jsonArray.get(i);
+//                                    JSONObject jsonCatItems = catObject.getJSONObject("categories");
+//
+//                                    strName = jsonCatItems.getString("name");
+//
+//                                    arrTitleList.add(strName);
+//                                    adapter.addFragment(new DeliveryFragment(), arrTitleList.get(i));
+//                                    viewPager.setAdapter(adapter);
+//                                }
+//                            }catch (Exception ex){
+//                                    e.printStackTrace();
+//                            }
+//                        }
+//                    });
+//
+//
+//            return null;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(String s) {
+//            super.onPostExecute(s);
+//
+////            try{
+////
+////            }catch (Exception e){
+////                e.printStackTrace();
+////            }
+//
+//
 //        }
 //    }
+
+
+    private void setUpViewPager(ViewPager viewPager){
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+//        adapter.addFragment(new DeliveryFragment(), "Delivery");
+//        adapter.addFragment(new DiningFragment(), "Dining Out");
+//        adapter.addFragment(new DesertsBakesFragment(), "Deserts & Bakes");
+//        adapter.addFragment(new CafesMoreFragment(), "Cafes & More");
+//        adapter.addFragment(new DrinksNightLifeFragment(), "Drinks & Nightlife");
+//        adapter.addFragment(new CollectionsFragment(), "Collections");
+
+        for (int i = 0; i < arrTitleList.size(); i++){
+            adapter.addFragment(new DeliveryFragment(), arrTitleList.get(i));
+            viewPager.setAdapter(adapter);
+        }
+    }
 
     @Override
     public void onBackPressed() {
